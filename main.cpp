@@ -1,16 +1,16 @@
 #include <iostream>
 #include "server.h"
 #include "client.h"
-#include <rapidjson>
+#include "rapidjson/document.h"
 
 int main() {
 
 
     Server server;
-    Client client;
+    // Client client;
 
     server.server();
-    client.client();
+    // client.client();
 
     return 0;
 }
