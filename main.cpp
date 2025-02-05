@@ -5,12 +5,17 @@
 
 int main() {
 
+    // If building the server
+    #ifdef BUILD_SERVER
+        Server server;
+        server.server();
+    #endif
 
-    Server server;
-    // Client client;
-
-    server.server();
-    // client.client();
+    // If building the client
+    #ifdef BUILD_CLIENT
+        Client client;
+        client.client();
+    #endif
 
     return 0;
 }
