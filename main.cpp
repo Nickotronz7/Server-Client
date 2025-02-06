@@ -4,18 +4,15 @@
 #include "rapidjson/document.h"
 
 int main() {
+#ifdef BUILD_SERVER
+    Server server;
+    server.server();
+#endif
 
-    // If building the server
-    #ifdef BUILD_SERVER
-        Server server;
-        server.server();
-    #endif
-
-    // If building the client
-    #ifdef BUILD_CLIENT
-        Client client;
-        client.client();
-    #endif
+#ifdef BUILD_CLIENT
+    Client client;
+    client.client();
+#endif
 
     return 0;
 }

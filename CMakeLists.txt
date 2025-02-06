@@ -3,27 +3,27 @@ project(Server_Client)
 
 set(CMAKE_CXX_STANDARD 11)
 
-# Option to build the client
+# Options to enable/disable server and client builds
+option(BUILD_SERVER "Build the server executable" ON)
 option(BUILD_CLIENT "Build the client executable" ON)
 
-# Option to build the server
-option(BUILD_SERVER "Build the server executable" ON)
+set(SOURCE_FILES main.cpp)
+set(SERVER_SOURCES server.cpp server.h ${SOURCE_FILES})
+set(CLIENT_SOURCES client.cpp client.h ${SOURCE_FILES})
 
-# Add sources for the server and client
-set(SERVER_SOURCES main.cpp server.cpp server.h)
-set(CLIENT_SOURCES main.cpp client.cpp client.h)
-
-# Add executable only if the corresponding option is ON
-if(BUILD_SERVER)
-    add_executable(Server ${SERVER_SOURCES})
-    target_link_libraries(Server Threads::Threads)
-endif()
-
-if(BUILD_CLIENT)
-    add_executable(Client ${CLIENT_SOURCES})
-    target_link_libraries(Client Threads::Threads)
-endif()
-
-# Enable threading support
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
+
+# Build Server
+if (BUILD_SERVER)
+    add_executable(Server ${SERVER_SOURCES})
+    target_link_libraries(Server Threads::Threads)
+    target_compile_definitions(Server PRIVATE BUILD_SERVER)
+endif()
+
+# Build Client
+if (BUILD_CLIENT)
+    add_executable(Client ${CLIENT_SOURCES})
+    target_link_libraries(Client Threads::Threads)
+    target_compile_definitions(Client PRIVATE BUILD_CLIENT)
+endif()

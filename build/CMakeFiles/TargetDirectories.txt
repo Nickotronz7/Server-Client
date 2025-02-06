@@ -1,3 +1,0 @@
-/home/nicko/Documents/bbMigration/McLovin_POC/Server-Client/build/CMakeFiles/Server_Client.dir
-/home/nicko/Documents/bbMigration/McLovin_POC/Server-Client/build/CMakeFiles/edit_cache.dir
-/home/nicko/Documents/bbMigration/McLovin_POC/Server-Client/build/CMakeFiles/rebuild_cache.dir
